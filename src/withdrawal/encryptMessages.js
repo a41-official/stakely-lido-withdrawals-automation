@@ -53,13 +53,13 @@ async function encryptMessages(signatures, outputFolder, password) {
 		const fullMessageJson = JSON.stringify(fullMessage);
 		const fileName = `${signature.validator_index}_${signature.validator_key}_exit.json`;
     
-		if (fs.existsSync(`${outputFolder}/${fileName}`)) {
+	/*	if (fs.existsSync(`${outputFolder}/${fileName}`)) {
 			const overwrite = await overwritePrompt(fileName);
 			if (!overwrite) {
 				skippedSignatures++;
 				continue;
 			}
-		}
+		} */
     
 		const store = await encryptJsonMessage(fullMessageJson, password);
 		const successfulWrite = await saveEncryptedMessageToFile(outputFolder, fileName, store);
